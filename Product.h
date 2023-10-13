@@ -1,21 +1,19 @@
 #pragma once
 #include <string>
-#include "ProductType.h"
-class Product
+#include "iPriceable.h"
+
+class Product : public iPriceable
 {
 public:
-	Product(uint32_t id, uint16_t vat, const std::string& name, float price, ProductType type);
-	Product(uint32_t id, uint16_t vat, const std::string& name, float price, const std::string& date);
+	Product(uint32_t id, const std::string& name, float price);
+	std::string GetName() const override;
+	virtual float GetVATPrice() const=0;
+	virtual uint16_t GetVAT()const = 0;
 
-private:
+protected:
 	uint32_t m_id;
-	uint16_t m_vat;
 	std::string m_name;
 	float m_price;
-	
-	std::string m_date;
-	ProductType m_type;
-
 
 };
 

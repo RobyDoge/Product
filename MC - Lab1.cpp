@@ -1,11 +1,13 @@
 #include <iostream>
+#include "iPriceable.h"
 #include "Product.h"
+#include "PerishableProduct.h"
 #include <fstream>
 #include <vector>
 
 int main()
 {
-    std::vector<Product> products;
+    std::vector<iPriceable*> products;
 	std::ifstream f("product.prodb");
 	uint32_t id;
 	uint16_t vat;
@@ -18,8 +20,8 @@ int main()
 	while (!f.eof())
 	{
 		f >> id >> name >> price >> vat >> typeOrDate;
-		//Product product = product(id, );
+		iPriceable *product = new PerishableProduct(id,name,price,typeOrDate);
 		products.push_back(product);
 	}
-	file.close();
+	f.close();
 }
