@@ -11,3 +11,11 @@ std::string Product::GetName() const
 {
 	return m_name;
 }
+
+std::ostream& operator<<(std::ostream& out, const Product& product)
+{
+	return out << product.m_id << " "
+		<< product.m_name << " "
+		<< product.m_price << " "
+		<< product.GetVAT() << std::endl;
+}

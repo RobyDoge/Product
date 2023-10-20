@@ -1,4 +1,5 @@
 #pragma once
+#include <string>
 #include <cstdint>
 enum class ProductType:uint16_t
 {
@@ -7,4 +8,6 @@ enum class ProductType:uint16_t
 	Clothing
 
 };
+
+ProductType CovertStringToProductType(const std::string& type);
 
